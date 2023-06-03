@@ -5,42 +5,7 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: monospace;
-            font-size: 16px;
-            line-height: 1.5;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        #terminal {
-            background-color: #000;
-            /* border: 1px solid #fff; */
-            border: none;
-            padding: 20px;
-            width: 600px;
-        }
-
-        #terminal .command-line {
-            color: #0f0;
-        }
-
-        #terminal .output {
-            color: #fff;
-        }
-
-        #terminal input[type="text"] {
-            background-color: #000;
-            color: #fff;
-            border: none;
-            width: 100%;
-            padding: 5px;
-        }
+        /* ...Diğer stil tanımlamaları burada yer alacak... */
     </style>
 </head>
 
@@ -85,9 +50,8 @@
             outputDiv.classList.add("output");
 
             const commandLineText = `<span class="command-line">${getPrompt()}</span> ${command}`;
-            const outputText = `Command executed: ${command}`;
 
-            outputDiv.innerHTML = `${commandLineText}<br>${outputText}`;
+            outputDiv.innerHTML = commandLineText;
 
             terminalDiv.insertBefore(outputDiv, commandLineDiv.nextSibling);
             terminalDiv.scrollTop = terminalDiv.scrollHeight;
