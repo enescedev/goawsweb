@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: monospace;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 20px;
+        }
+
+        #terminal {
+            background-color: #000;
+            border: none;
+            padding: 50px;
+            width: 700px;
+            margin: 0 auto;
+        }
+
+        #terminal input[type="text"],
+        #terminal input[type="password"] {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 5px;
+        }
+
+        #terminal input[type="submit"],
+        #terminal button {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 5px 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="terminal">
+        <pre>
+   ██████████ ██████   █████ ██████████  █████████    █████████  ██████████
+   ░░███░░░░░█░░██████ ░░███ ░░███░░░░░█ ███░░░░░███  ███░░░░░███░░███░░░░░█
+    ░███  █ ░  ░███░███ ░███  ░███  █ ░ ░███    ░░░  ███     ░░░  ░███  █ ░ 
+    ░██████    ░███░░███░███  ░██████   ░░█████████ ░███          ░██████   
+    ░███░░█    ░███ ░░██████  ░███░░█    ░░░░░░░░███░███          ░███░░█   
+    ░███ ░   █ ░███  ░░█████  ░███ ░   █ ███    ░███░░███     ███ ░███ ░   █
+    ██████████ █████  ░░█████ ██████████░░█████████  ░░█████████  ██████████
+   ░░░░░░░░░░ ░░░░░    ░░░░░ ░░░░░░░░░░  ░░░░░░░░░    ░░░░░░░░░  ░░░░░░░░░░ 
+ <!-- _                      _
+| |__   ___  __ _ _ __ | |_
+| '_ \ / _ \/ _` | '_ \| __|
+| | | |  __/ (_| | | | | |_
+|_| |_|\___|\__,_|_| |_|\__| -->
+        </pre>
+        <form method="post" action="/">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" autocomplete="off" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <input type="submit" value="Login">
+            <button onclick="redirectToDashboard()">Admin değilsen devam et</button>
+        </form>
+    </div>
+
+    <script>
+        function redirectToDashboard() {
+            window.location.href = "/dashboard";
+        }
+    </script>
+</body>
+
+</html>

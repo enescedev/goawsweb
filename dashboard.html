@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: monospace;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #terminal {
+            background-color: #000;
+            /* border: 1px solid #fff; */
+            border: none;
+            padding: 20px;
+            width: 600px;
+        }
+
+        #terminal .command-line {
+            color: #0f0;
+        }
+
+        #terminal .output {
+            color: #fff;
+        }
+
+        #terminal input[type="text"] {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="terminal">
+        <pre>
+ ██████████ ██████   █████ ██████████  █████████    █████████  ██████████
+ ░░███░░░░░█░░██████ ░░███ ░░███░░░░░█ ███░░░░░███  ███░░░░░███░░███░░░░░█
+  ░███  █ ░  ░███░███ ░███  ░███  █ ░ ░███    ░░░  ███     ░░░  ░███  █ ░ 
+  ░██████    ░███░░███░███  ░██████   ░░█████████ ░███          ░██████   
+  ░███░░█    ░███ ░░██████  ░███░░█    ░░░░░░░░███░███          ░███░░█   
+  ░███ ░   █ ░███  ░░█████  ░███ ░   █ ███    ░███░░███     ███ ░███ ░   █
+  ██████████ █████  ░░█████ ██████████░░█████████  ░░█████████  ██████████
+ ░░░░░░░░░░ ░░░░░    ░░░░░ ░░░░░░░░░░  ░░░░░░░░░    ░░░░░░░░░  ░░░░░░░░░░ 
+                                                                  
+ Type 'help' to see the list of available commands.
+ Type 'sumfetch' to display summary.                                                                                     
+        </pre>
+        <div id="command-line" class="command-line"></div>
+        <input type="text" id="command-input" autofocus>
+    </div>
+
+    <script>
+        const terminalDiv = document.getElementById("terminal");
+        const commandLineDiv = document.getElementById("command-line");
+        const commandInput = document.getElementById("command-input");
+
+        let hostname = "dashboard"; // Default hostname
+
+        commandInput.addEventListener("keydown", handleCommandInput);
+
+        function handleCommandInput(event) {
+            if (event.key === "Enter") {
+                const command = commandInput.value;
+                executeCommand(command);
+                commandInput.value = "";
+            }
+        }
+
+        function executeCommand(command) {
+            const outputDiv = document.createElement("div");
+            outputDiv.classList.add("output");
+
+            const commandLineText = `<span class="command-line">${getPrompt()}</span> ${command}`;
+            const outputText = `Command executed: ${command}`;
+
+            outputDiv.innerHTML = `${commandLineText}<br>${outputText}`;
+
+            terminalDiv.insertBefore(outputDiv, commandLineDiv.nextSibling);
+            terminalDiv.scrollTop = terminalDiv.scrollHeight;
+        }
+
+        function getPrompt() {
+            const username = getUsername();
+            return `${username}@${hostname}:~$`;
+        }
+
+        function getUsername() {
+            // Burada, kullanıcı adını çekmek için gerekli kodu ekleyebilirsiniz.
+            // Örneğin, kullanıcı adını bir cookie'den veya sunucu tarafından gelen veriden alabilirsiniz.
+            // Bu örnekte sabit olarak "user" olarak varsayılan bir kullanıcı adı kullanılmıştır.
+            const username = "user";
+            return username;
+        }
+    </script>
+</body>
+
+</html>
